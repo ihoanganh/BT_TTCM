@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Demo.Models.HoaDonXuat>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "TableHoaDonXuat";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMain.cshtml";
+}
+<h1>Hóa Đơn Xuất</h1>
+
+<p>
+    <a asp-controller="Forms" asp-action="AddHoaDonXuat">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayXuat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNvNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNvNavigation.HoTen)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-controller="Tables" asp-action="TableChiTietHDX" asp-route-idHDX="@item.Id">Chi Tiết Hóa Đơn</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

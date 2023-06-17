@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Demo.Models.HangHoa>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "TableHangHoa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<h1>Bảng Hàng hóa</h1>
+
+<p>
+    <a asp-controller="Forms" asp-action="AddHangHoa">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenHh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNhaCcNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNhaCcNavigation.TenNcc)
+            </td>
+            <td>
+                <a asp-action="EditHangHoa" asp-controller="Forms" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DeleteHangHoa" asp-controller="Forms" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Demo.Models.KhachHang>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "TableKhachHang";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMain.cshtml";
+}
+<h1>Bảng Khách hàng</h1>
+
+<p>
+    <a asp-action="AddKhachHang" asp-controller="Forms">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @if(item.Img != null){
+                <td>
+                <img src="@Url.Content("~/Customer/" + item.Img)" alt="" width="50px" height="50px" />
+            </td>
+            }
+            else{
+                 <td>
+                <img src="" alt="" width="50px" height="50px" />
+            </td>
+            }
+            <td>
+                <a asp-controller="Forms"asp-action="EditKhachHang" asp-route-IdKH="@item.Id">Edit</a> |
+                <a asp-controller="Forms"asp-action="DeleteKhachHang" asp-route-IdKH="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

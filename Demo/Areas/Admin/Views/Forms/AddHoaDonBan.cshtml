@@ -1,0 +1,52 @@
+﻿@model Demo.Models.HoaDonBan
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "AddHoaDonBan";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<h1>Thêm Hóa Đơn Bán</h1>
+
+<h4>Hóa Đơn Bán</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddHoaDonBan">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NgayXuat" class="control-label"></label>
+                <input asp-for="NgayXuat" class="form-control" />
+                <span asp-validation-for="NgayXuat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TongTien" class="control-label"></label>
+                <input asp-for="TongTien" class="form-control" />
+                <span asp-validation-for="TongTien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KhuyenMai" class="control-label"></label>
+                <input asp-for="KhuyenMai" class="form-control" />
+                <span asp-validation-for="KhuyenMai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdNv" class="control-label"></label>
+                <select asp-for="IdNv" class ="form-control" asp-items="ViewBag.IdNv"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdKh" class="control-label"></label>
+                <select asp-for="IdKh" class ="form-control" asp-items="ViewBag.IdKh"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdBan" class="control-label"></label>
+                <select asp-for="IdBan" class ="form-control" asp-items="ViewBag.IdBan"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

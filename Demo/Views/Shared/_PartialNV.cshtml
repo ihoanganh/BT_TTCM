@@ -1,0 +1,26 @@
+﻿
+@foreach (var item in ViewBag.NV)
+{
+    <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+        <div class="staff">
+            <div class="img"> 
+                @*<img src="@Url.Content("../Employee/" + item.AnhDaiDien)" alt="Ảnh đại diện" />*@
+                <img class="img" style="width:100%" src="@Url.Content("../Employee/"+ item.AnhDaiDien)" alt="Colorlib Template">
+
+                </div>
+            <div class="text pt-4">
+                <h3>@item.HoTen</h3>
+                <span class="position mb-2"></span>
+                <div class="faded">
+                    <ul class="ftco-social d-flex">
+                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-google-plus"></span></a></li>
+                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

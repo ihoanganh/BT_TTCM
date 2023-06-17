@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Demo.Models.HoaDonBan>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "TableHoaDonBan";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminMain.cshtml";
+}
+
+<h1>Hóa Đơn Bán</h1>
+
+<p>
+    <a asp-controller="Forms" asp-action="AddHoaDonBan">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SoHd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayXuat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhuyenMai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBanNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdKhNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNvNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoHd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayXuat)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBanNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKhNavigation.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNvNavigation.HoTen)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-controller="Tables" asp-action="TableChiTietHDB" asp-route-idHDB="@item.Id">Chi Tiết Hóa Đơn</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
